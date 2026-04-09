@@ -1,36 +1,28 @@
-    /******************************************************************************
-        IoT Motor Driver Example
+/*
+ * ---------------------------------------------------------------------------------
+ * Copyright (c) 2025, SparkFun Electronics Inc.
+ *
+ * SPDX-License-Identifier: MIT
+ * ---------------------------------------------------------------------------------
+ */
 
-        Written By:
-            Madison Chodikov
-            Eric Orosel
-        Company: SparkFun Electronics   
-        Date: September 1 2023
-
-        This sketch is a stripped down version of the firmware that is preprogrammed
-        on the IoT Motor Driver. It is based on the open loop, velocity motor control
-        example from the SimpleFOC Arduino library.
-
-        This sketch will spin the motor based on the button inputs:
-            - Button 13: Starts/Stops the motor rotation
-            - Button 14: When spinning, switches the direction of rotation
-
-    ===============================================================================
-        Products:
-            IoT Brushless Motor Driver: https://www.sparkfun.com/products/22132
-
-        Repository:
-            https://github.com/sparkfun/SparkFun_IoT_Brushless_Motor_Driver
-    ===============================================================================
-
-        SparkFun code, firmware, and software is released under the MIT 
-        License (http://opensource.org/licenses/MIT).
-
-        Distributed as-is; no warranty is given.
-    ******************************************************************************/
-
-    #include <Wire.h>
-    #include <SimpleFOC.h> //http://librarymanager/All#Simple%20FOC
+/*
+ * Example 3: Angle Calculations
+ * -------------------------
+ * This example demonstrates how to configure the TMAG5273 sensor to perform angle calculations
+ *
+ * * Hardware Connections:
+ * - Connect the TMAG5273 sensor to the SparkFun Qwiic connector on your SparkFun microcontroller board.
+ *
+ * Note: Make sure to install the SparkFun TMAG5273 Arduino Library before running this example.
+ * You can install it via the Arduino Library Manager or download it from:
+ *      https://github.com/sparkfun/SparkFun_TMAG5273_Arduino_Library
+ *
+ */
+#include "SparkFun_TMAG5273_Arduino_Library.h" // Used to send and recieve specific information from our sensor
+#include <Wire.h>                              // Used to establish serial communication on the I2C bus
+#include <Arduino.h>
+#include <SimpleFOC.h> //http://librarymanager/All#Simple%20FOC
 
 
     //GPIO
@@ -45,9 +37,10 @@
     #define vl23      23
     #define wl33      33
     #define curSense  32
+    
+bool state = true;
 
-    bool state = true;
-
+  
     //motor driver
     BLDCMotor motor = BLDCMotor(7);
     BLDCDriver6PWM driver = BLDCDriver6PWM(uh16, ul17, vh18, vl23, wh19, wl33,  curSense);
@@ -88,11 +81,19 @@
       }
     }
 
+// Create a new sensor object
+TMAG5273 sensor;
+// I2C default address
+uint8_t i2cAddress = TMAG5273_I2C_ADDRESS_INITIAL;
+// Set constants for setting up device
+uint8_t conversionAverage = TMAG5273_X32_CONVERSION;
+uint8_t magneticChannel = TMAG5273_XYX_ENABLE;
+uint8_t angleCalculation = TMAG5273_XY_ANGLE_CALCULATION;
 
-    void setup() {
-
-      //motor demo stuff
-      driver.voltage_power_supply = 3.3;
+void setup()
+{
+    delay(1000);
+    driver.voltage_power_supply = 3.3;
       driver.pwm_frequency = 20000;
       driver.voltage_limit = 4;
       driver.init();
@@ -107,13 +108,46 @@
       attachInterrupt(aux2.PIN, isr2, FALLING); // Triggers when aux2 is pulled to GND (button pressed)
       delay(100);
 
-      Serial.begin(115200);
+    Wire.begin();
+    // Start serial communication at 115200 baud
+    Serial.begin(115200);
+
+    // Begin example of the magnetic sensor code (and add whitespace for easy reading)
+    Serial.println("");
+    Serial.println("------------------------------------------------------------------");
+    Serial.println("TMAG5273 Example 3: Angle Calculations");
+    Serial.println("------------------------------------------------------------------");
+
+    Serial.println("");
+    // If begin is successful (0), then start example
+    if (sensor.begin(i2cAddress, Wire) == true)
+    {
+        Serial.println("Begin");
+    }
+    else // Otherwise, infinite loop
+    {
+        Serial.println("Device failed to setup - Freezing code.");
+        while (1)
+            ; // Runs forever
     }
 
-    /////////////////////////////////////////////////////////////////////////
-    void loop() { 
+    // Set the device at 32x average mode
+    sensor.setConvAvg(conversionAverage);
 
-      // Button Press ISR
+    // Choose new angle to calculate from
+    // Can calculate angles between XYX, YXY, YZY, and XZX
+    sensor.setMagneticChannel(magneticChannel);
+
+    // Enable the angle calculation register
+    // Can choose between XY, YZ, or XZ priority
+    sensor.setAngleEn(angleCalculation);
+}
+
+void loop()
+{
+
+  // =  motor demo stuff =
+  // Button Press ISR
       if(aux1.pressed){ 
         aux1.pressed = false;
       }
@@ -123,13 +157,27 @@
         aux2.pressed = false;
       }
 
-      // open loop velocity movement
-      // using motor.voltage_limit and motor.velocity_limit
-      // Basic motor movement
       motor.move(target_velocity);
 
       // user communication
       command.run();
+      
+  //=========================Magnetic Sensor=============================
+    if ((sensor.getMagneticChannel() != 0) &&
+        (sensor.getAngleEn() != 0)) // Checks if mag channels are on - turns on in setup
+    {
+        float angleCalculation = sensor.getAngleResult();
 
-      delay(5);
+        Serial.print("XYX: ");
+        Serial.print(angleCalculation, 4);
+        Serial.println("°");
     }
+    else
+    {
+        Serial.println("Mag Channels disabled, stopping..");
+        while (1)
+            ;
+    }
+
+    delay(5);
+}
