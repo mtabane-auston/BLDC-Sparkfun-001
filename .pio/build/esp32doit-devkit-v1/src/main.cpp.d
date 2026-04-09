@@ -1,5 +1,5 @@
 .pio/build/esp32doit-devkit-v1/src/main.cpp.o: src/main.cpp \
- lib/TMAG5273/SparkFun_TMAG5273_Arduino_Library.h \
+ src/magnetic_sensor.h lib/TMAG5273/SparkFun_TMAG5273_Arduino_Library.h \
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp_arduino_version.h \
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/freertos/FreeRTOS.h \
@@ -148,6 +148,7 @@
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src/SPI.h \
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-spi.h \
  .pio/libdeps/esp32doit-devkit-v1/SparkFun\ Toolkit/src/sfTk/sfTkISPI.h \
+ src/motor_control.h \
  .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/SimpleFOC.h \
  .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/BLDCMotor.h \
  .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/common/base_classes/FOCMotor.h \
