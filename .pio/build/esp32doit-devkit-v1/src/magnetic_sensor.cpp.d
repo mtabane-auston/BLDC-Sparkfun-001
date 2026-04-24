@@ -1,6 +1,5 @@
 .pio/build/esp32doit-devkit-v1/src/magnetic_sensor.cpp.o: \
  src/magnetic_sensor.cpp src/magnetic_sensor.h \
- lib/TMAG5273/SparkFun_TMAG5273_Arduino_Library.h \
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp_arduino_version.h \
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/freertos/FreeRTOS.h \
@@ -137,6 +136,7 @@
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src/Wire.h \
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal.h \
+ lib/TMAG5273/SparkFun_TMAG5273_Arduino_Library.h \
  lib/TMAG5273/SparkFun_TMAG5273_Arduino_Library_Defs.h \
  .pio/libdeps/esp32doit-devkit-v1/SparkFun\ Toolkit/src/SparkFun_Toolkit.h \
  .pio/libdeps/esp32doit-devkit-v1/SparkFun\ Toolkit/src/sfTkArdI2C.h \
@@ -148,4 +148,64 @@
  .pio/libdeps/esp32doit-devkit-v1/SparkFun\ Toolkit/src/sfTkArdSPI.h \
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src/SPI.h \
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-spi.h \
- .pio/libdeps/esp32doit-devkit-v1/SparkFun\ Toolkit/src/sfTk/sfTkISPI.h
+ .pio/libdeps/esp32doit-devkit-v1/SparkFun\ Toolkit/src/sfTk/sfTkISPI.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/SimpleFOC.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/BLDCMotor.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/common/base_classes/FOCMotor.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/common/base_classes/Sensor.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/common/base_classes/CurrentSense.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/common/base_classes/BLDCDriver.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/common/base_classes/../foc_utils.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/common/base_classes/../time_utils.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/common/base_classes/../foc_utils.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/common/base_classes/../defaults.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/common/base_classes/../pid.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/common/base_classes/../time_utils.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/common/base_classes/../lowpass_filter.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/common/base_classes/Sensor.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/common/base_classes/BLDCDriver.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/common/foc_utils.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/common/time_utils.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/common/defaults.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/StepperMotor.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/common/base_classes/StepperDriver.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/drivers/hardware_api.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/drivers/../common/foc_utils.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/drivers/../common/time_utils.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/drivers/../communication/SimpleFOCDebug.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/drivers/../common/base_classes/BLDCDriver.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/sensors/Encoder.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/sensors/../common/foc_utils.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/sensors/../common/time_utils.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/sensors/../common/base_classes/Sensor.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/sensors/MagneticSensorSPI.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/sensors/MagneticSensorI2C.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/sensors/MagneticSensorAnalog.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/sensors/MagneticSensorPWM.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/sensors/HallSensor.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/sensors/GenericSensor.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/drivers/BLDCDriver3PWM.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/drivers/../common/defaults.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/drivers/hardware_api.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/drivers/BLDCDriver6PWM.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/drivers/StepperDriver4PWM.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/drivers/../common/base_classes/StepperDriver.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/drivers/StepperDriver2PWM.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/current_sense/InlineCurrentSense.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/current_sense/../common/foc_utils.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/current_sense/../common/time_utils.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/current_sense/../common/defaults.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/current_sense/../common/base_classes/CurrentSense.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/current_sense/../common/lowpass_filter.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/current_sense/hardware_api.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/current_sense/LowsideCurrentSense.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/current_sense/../common/base_classes/FOCMotor.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/current_sense/GenericCurrentSense.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/communication/Commander.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/communication/../common/base_classes/FOCMotor.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/communication/../common/pid.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/communication/../common/lowpass_filter.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/communication/commands.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/communication/StepDirListener.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/communication/../common/foc_utils.h \
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/communication/SimpleFOCDebug.h

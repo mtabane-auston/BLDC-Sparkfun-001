@@ -1,5 +1,5 @@
 .pio/build/esp32doit-devkit-v1/src/main.cpp.o: src/main.cpp \
- src/magnetic_sensor.h lib/TMAG5273/SparkFun_TMAG5273_Arduino_Library.h \
+ src/magnetic_sensor.h \
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp_arduino_version.h \
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/freertos/FreeRTOS.h \
@@ -136,6 +136,7 @@
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src/Wire.h \
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal.h \
+ lib/TMAG5273/SparkFun_TMAG5273_Arduino_Library.h \
  lib/TMAG5273/SparkFun_TMAG5273_Arduino_Library_Defs.h \
  .pio/libdeps/esp32doit-devkit-v1/SparkFun\ Toolkit/src/SparkFun_Toolkit.h \
  .pio/libdeps/esp32doit-devkit-v1/SparkFun\ Toolkit/src/sfTkArdI2C.h \
@@ -148,7 +149,6 @@
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src/SPI.h \
  /home/austonmtabane/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-spi.h \
  .pio/libdeps/esp32doit-devkit-v1/SparkFun\ Toolkit/src/sfTk/sfTkISPI.h \
- src/motor_control.h \
  .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/SimpleFOC.h \
  .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/BLDCMotor.h \
  .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/common/base_classes/FOCMotor.h \
@@ -208,4 +208,5 @@
  .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/communication/commands.h \
  .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/communication/StepDirListener.h \
  .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/communication/../common/foc_utils.h \
- .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/communication/SimpleFOCDebug.h
+ .pio/libdeps/esp32doit-devkit-v1/Simple\ FOC/src/communication/SimpleFOCDebug.h \
+ src/motor_control.h
